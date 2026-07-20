@@ -213,31 +213,18 @@
             box-shadow: 0 2px 6px rgba(34, 49, 108, 0.1);
         }
 
-        /* Headteacher Welcome Panel Styling */
+        /* --- UPDATED: Headteacher Welcome Panel Styling --- */
         .welcome-panel {
             background: white;
             border-radius: 12px;
             border: 2px solid #C02C21;
-            position: relative;
+            position: relative; /* Allows absolute positioning inside for mobile */
             box-shadow: 0 4px 8px rgba(34, 49, 108, 0.1);
-        }
-
-        .headteacher-photo {
-            position: absolute;
-            left: 20px;
-            top: 20px; 
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            border: 4px solid white;
-            object-fit: cover;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-            z-index: 5;
         }
 
         .welcome-header {
             background-color: #C02C21;
-            padding: 1.5rem 1.5rem 1.5rem 170px;
+            padding: 1.5rem 1.5rem 1.5rem 180px; /* Leaves space on the left for the floating photo */
             border-radius: 9px 9px 0 0;
             min-height: 110px;
             display: flex;
@@ -252,16 +239,30 @@
         }
 
         .welcome-content {
-            padding: 0.5rem 2.5rem 2rem 2.5rem; /* Reduced top padding */
+            padding: 1.5rem 2.5rem 2rem 2.5rem;
             color: #4a5568; 
         }
 
+        .headteacher-photo {
+            float: left; /* Pushes image to the left and wraps text around it */
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin-top: -85px; /* Pulls the image up so it overlaps the red header */
+            margin-right: 25px;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 5;
+            shape-outside: circle(50%); /* This CSS creates the perfect curve wrap for the text! */
+            object-fit: cover;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        }
+
         .welcome-intro {
-            margin-left: 140px; 
-            margin-top: -10px; /* Pulls the text up closer to the header */
-            min-height: 50px;
             font-weight: 600;
             color: #4a5568;
+            /* Margins removed so the text naturally hugs the floated image */
         }
 
         .highlight-blue {
@@ -314,7 +315,7 @@
                 grid-template-columns: 1fr;
             }
             
-            /* Mobile Header Restyled for Perfect Centering */
+            /* Mobile Header Centering */
             header {
                 flex-direction: column;
                 align-items: center;
@@ -323,7 +324,7 @@
                 width: 100%;
             }
             .header-logo {
-                margin: 0 auto 1rem auto; /* Strict auto-margins for centering */
+                margin: 0 auto 1rem auto; 
                 max-width: 110px;
                 display: block;
             }
@@ -385,29 +386,29 @@
                 border-bottom: 1px solid #f0d5d3;
             }
             
-            /* Welcome Panel Mobile Layout */
-            .headteacher-photo {
-                position: relative;
-                left: 0;
-                top: 0;
-                margin: -40px auto 1rem auto; 
-                display: block;
-            }
+            /* --- UPDATED: Welcome Panel Mobile Layout --- */
             .welcome-header {
-                padding: 1.5rem;
-                text-align: center;
-                justify-content: center;
+                padding: 1.2rem 1rem 1.2rem 100px; /* Leaves exact space on the left for the photo */
+                text-align: left;
+                min-height: 90px;
+                align-items: center;
             }
             .welcome-header h2 {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
-            .welcome-intro {
-                margin-left: 0; 
-                margin-top: 0; /* Resets the negative pull for mobile layout */
-                text-align: center;
+            .headteacher-photo {
+                float: none; /* Disables the desktop text wrapping */
+                position: absolute;
+                top: 1.2rem; /* Aligns perfectly with the header padding */
+                left: 1rem;
+                margin: 0; 
+                width: 75px;
+                height: 75px;
+                border: 2px solid white;
+                shape-outside: none; /* Disables the circular wrapping */
             }
             .welcome-content {
-                padding: 1rem 1.5rem 2rem 1.5rem;
+                padding: 1.5rem;
             }
         }
     </style>
@@ -486,13 +487,14 @@
         <div class="content-grid">
             
             <section class="welcome-panel">
-                <img src="images/claire.png" alt="Headteacher Claire" class="headteacher-photo">
-                
                 <div class="welcome-header">
                     <h2>Welcome to St. Eanswythe's Primary School</h2>
                 </div>
                 
                 <div class="welcome-content">
+                    <!-- The image is now inside the content area to allow true text wrapping on Desktop -->
+                    <img src="images/claire.png" alt="Headteacher Claire" class="headteacher-photo">
+                    
                     <p class="welcome-intro">As the Headteacher I would like to welcome you to our community and invite you to explore the website which I hope will give you an impression of the caring ethos with which we seek to educate the children.</p>
                     
                     <p class="highlight-blue">If you are looking for a school place in September 2026, please contact us to book a tour of our friendly school and its extensive grounds!</p>
