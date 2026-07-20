@@ -69,7 +69,7 @@
             position: relative;
         }
 
-        /* Mobile Menu Toggle Button (Hidden on Desktop) */
+        /* Mobile Menu Toggle Button */
         .mobile-menu-toggle {
             display: none;
             background-color: #C02C21;
@@ -213,11 +213,11 @@
             box-shadow: 0 2px 6px rgba(34, 49, 108, 0.1);
         }
 
-        /* --- NEW: Headteacher Welcome Panel Styling --- */
+        /* Headteacher Welcome Panel Styling */
         .welcome-panel {
             background: white;
             border-radius: 12px;
-            border: 2px solid #C02C21; /* Red border to match Saltwood design */
+            border: 2px solid #C02C21;
             position: relative;
             box-shadow: 0 4px 8px rgba(34, 49, 108, 0.1);
         }
@@ -225,7 +225,7 @@
         .headteacher-photo {
             position: absolute;
             left: 20px;
-            top: 20px; /* This allows it to overlap the red header and white body */
+            top: 20px; 
             width: 130px;
             height: 130px;
             border-radius: 50%;
@@ -237,7 +237,7 @@
 
         .welcome-header {
             background-color: #C02C21;
-            padding: 1.5rem 1.5rem 1.5rem 170px; /* Leaves space for the floating photo */
+            padding: 1.5rem 1.5rem 1.5rem 170px;
             border-radius: 9px 9px 0 0;
             min-height: 110px;
             display: flex;
@@ -252,19 +252,20 @@
         }
 
         .welcome-content {
-            padding: 1rem 2.5rem 2rem 2.5rem;
-            color: #4a5568; /* Slightly softer grey for reading */
+            padding: 0.5rem 2.5rem 2rem 2.5rem; /* Reduced top padding */
+            color: #4a5568; 
         }
 
         .welcome-intro {
-            margin-left: 140px; /* Indents the first paragraph around the photo */
+            margin-left: 140px; 
+            margin-top: -10px; /* Pulls the text up closer to the header */
             min-height: 50px;
             font-weight: 600;
             color: #4a5568;
         }
 
         .highlight-blue {
-            color: #00bfff; /* Bright blue highlight */
+            color: #00bfff; 
             font-weight: bold;
             font-size: 1.05rem;
         }
@@ -313,18 +314,25 @@
                 grid-template-columns: 1fr;
             }
             
-            /* Mobile Header */
+            /* Mobile Header Restyled for Perfect Centering */
             header {
                 flex-direction: column;
+                align-items: center;
+                justify-content: center;
                 text-align: center;
+                width: 100%;
             }
             .header-logo {
-                margin-right: 0;
-                margin-bottom: 1rem;
+                margin: 0 auto 1rem auto; /* Strict auto-margins for centering */
                 max-width: 110px;
+                display: block;
             }
             .header-text {
                 text-align: center;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
             header h1 {
                 font-size: 2rem;
@@ -382,7 +390,7 @@
                 position: relative;
                 left: 0;
                 top: 0;
-                margin: -40px auto 1rem auto; /* Pulls photo up into the previous section slightly, centers it */
+                margin: -40px auto 1rem auto; 
                 display: block;
             }
             .welcome-header {
@@ -394,7 +402,8 @@
                 font-size: 1.5rem;
             }
             .welcome-intro {
-                margin-left: 0; /* Remove indent on small screens */
+                margin-left: 0; 
+                margin-top: 0; /* Resets the negative pull for mobile layout */
                 text-align: center;
             }
             .welcome-content {
@@ -476,7 +485,6 @@
 
         <div class="content-grid">
             
-            <!-- Updated Welcome Panel -->
             <section class="welcome-panel">
                 <img src="images/claire.png" alt="Headteacher Claire" class="headteacher-photo">
                 
@@ -495,7 +503,7 @@
 
                     <p>I look forward to welcoming you.</p>
                     <br>
-                    <p><strong>Mrs Jacobs</strong><br>Headteacher</p>
+                    <p><strong>Mrs Claire</strong><br>Headteacher</p>
                 </div>
             </section>
 
