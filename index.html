@@ -64,15 +64,29 @@
         /* Navigation & Dropdowns */
         nav {
             background-color: #C02C21;
-            display: flex;
-            justify-content: center;
             border-top: 10px solid #22316C;
             border-bottom: 10px solid #22316C;
+            position: relative;
+        }
+
+        /* Mobile Menu Toggle Button (Hidden on Desktop) */
+        .mobile-menu-toggle {
+            display: none;
+            background-color: #C02C21;
+            color: white;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 1rem 1.5rem;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
         }
         
         .nav-links {
             list-style: none;
             display: flex;
+            justify-content: center;
             margin: 0;
             padding: 0;
         }
@@ -128,8 +142,11 @@
             color: #C02C21;
         }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
+        /* Desktop Hover logic */
+        @media (min-width: 769px) {
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
         }
 
         /* Main Layout */
@@ -234,13 +251,13 @@
             color: white;
         }
 
-        /* Responsive Design */
+        /* Responsive Design - Mobile Styling */
         @media (max-width: 768px) {
             .content-grid {
                 grid-template-columns: 1fr;
             }
             
-            /* Mobile Header Overrides */
+            /* Mobile Header */
             header {
                 flex-direction: column;
                 text-align: center;
@@ -261,19 +278,36 @@
                 height: 200px;
             }
 
-            /* Mobile Navigation Overrides */
+            /* Mobile Navigation Toggle */
+            .mobile-menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            /* Mobile Links Restructuring */
             .nav-links {
+                display: none; /* Hidden by default until toggled */
                 flex-direction: column;
                 width: 100%;
+                background-color: #a0241b; 
             }
+            .nav-links.active {
+                display: flex;
+            }
+
             .dropdown {
                 width: 100%;
+                display: block;
             }
+            
             .dropdown > a {
-                text-align: center;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 0.75rem 1rem; /* Reduced height for main mobile links */
+                padding: 0.85rem 1.5rem; /* Slimmer padding */
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+                font-size: 1rem;
             }
+
+            /* Mobile Dropdown Accordion */
             .dropdown-content {
                 position: static;
                 display: none;
@@ -282,17 +316,23 @@
                 border-top: none;
                 border-radius: 0;
             }
-            .dropdown-content a {
-                text-align: center;
-                background-color: #f8e8e7;
-                padding: 8px 16px; /* Reduced height for mobile dropdown items */
-                font-size: 0.9em; /* Slightly smaller font to reduce bulk */
+            
+            /* Class to trigger accordion expansion */
+            .dropdown-content.show {
+                display: block;
             }
-        }
 
-        /* Class to toggle dropdowns on mobile via JavaScript */
-        .dropdown-content.show {
-            display: block !important;
+            .dropdown-content a {
+                padding: 0.6rem 1.5rem 0.6rem 2.5rem; /* Indented neatly, slim height */
+                background-color: #fceceb;
+                color: #22316C;
+                font-size: 0.9em;
+                border-bottom: 1px solid #f0d5d3;
+            }
+            
+            .dropdown-content a:last-child {
+                border-bottom: none;
+            }
         }
     </style>
 </head>
@@ -308,6 +348,9 @@
     </header>
 
     <nav>
+        <button class="mobile-menu-toggle">
+            <span>☰ Menu</span>
+        </button>
         <ul class="nav-links">
             <li class="dropdown">
                 <a href="#home">Home ▾</a>
@@ -405,24 +448,32 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const dropdowns = document.querySelectorAll('.dropdown');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
 
+            // Toggle the main menu visibility on mobile
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Handle the accordion dropdown logic
             dropdowns.forEach(dropdown => {
                 const triggerLink = dropdown.querySelector('a');
                 const content = dropdown.querySelector('.dropdown-content');
 
                 triggerLink.addEventListener('click', (e) => {
-                    // Only apply this logic on mobile screens
+                    // Only apply accordion logic on mobile screens
                     if (window.innerWidth <= 768) {
-                        e.preventDefault(); // Stops the page from jumping to the top
+                        e.preventDefault(); 
 
-                        // Close any other open dropdowns first for a cleaner experience
+                        // Close any other open dropdowns for a clean accordion effect
                         document.querySelectorAll('.dropdown-content').forEach(menu => {
                             if (menu !== content) {
                                 menu.classList.remove('show');
                             }
                         });
 
-                        // Toggle the current dropdown
+                        // Toggle the clicked dropdown
                         content.classList.toggle('show');
                     }
                 });
