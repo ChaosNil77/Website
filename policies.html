@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Policies & Safeguarding - St. Eanswythe's</title>
     <style>
-        /* General Reset and Base Styles (Copied from your main site) */
+        /* General Reset and Base Styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,7 +16,7 @@
         h1, h2, h3 { color: #C02C21; margin-bottom: 1rem; }
         p { margin-bottom: 1rem; }
 
-        /* Header & Logo */
+        /* Header & Logo (Matching index.html) */
         header {
             background-color: #f9f9f9;
             color: #22316C;
@@ -25,13 +25,32 @@
             align-items: center;
             justify-content: center;
         }
-        .header-logo { max-width: 140px; height: auto; margin-right: 2rem; }
-        .header-text { text-align: center; }
-        header h1 { color: #C02C21; margin: 0; font-size: 2.5rem; line-height: 1.2; }
-        .subtitle { margin: 0.2rem 0 0 0; font-size: 1.2rem; font-weight: 600; }
-        .strapline { margin: 0; font-style: italic; font-size: 1.05rem; }
+        .header-logo {
+            max-width: 140px; 
+            height: auto;
+            margin-right: 2rem; 
+        }
+        .header-text {
+            text-align: left;
+        }
+        header h1 {
+            color: #C02C21;
+            margin: 0;
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            margin: 0.2rem 0 0 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .strapline {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.05rem;
+        }
 
-        /* Navigation (Updated to link back to index.html) */
+        /* Navigation */
         nav {
             background-color: #C02C21;
             border-top: 10px solid #22316C;
@@ -62,7 +81,7 @@
         .container { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
         .panel { background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(34, 49, 108, 0.1); }
 
-        /* --- NEW: Policy Document List Styles --- */
+        /* Policy Document List Styles */
         .policy-list {
             display: flex;
             flex-direction: column;
@@ -100,10 +119,33 @@
         footer { background-color: #1a224c; color: white; text-align: center; padding: 2.5rem; border-top: 3px solid #C02C21; }
         footer strong, footer p { color: white; margin-bottom: 0.5rem; }
 
-        /* Mobile Adjustments */
+        /* Responsive Design - Mobile Styling */
         @media (max-width: 768px) {
-            header { flex-direction: column; text-align: center; }
-            .header-logo { margin-right: 0; margin-bottom: 1rem; max-width: 110px; }
+            /* Mobile Header Centering (Matching index.html) */
+            header {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+            }
+            .header-logo {
+                margin: 0 auto 1rem auto; 
+                max-width: 110px;
+                display: block;
+            }
+            .header-text {
+                text-align: center;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            /* Mobile Navigation */
             .mobile-menu-toggle { display: block; }
             .nav-links { display: none; flex-direction: column; width: 100%; background-color: #a0241b; }
             .nav-links.active { display: flex; }
@@ -165,7 +207,6 @@
             <p>At St. Eanswythe's Primary School, we are fully committed to the safety, wellbeing, and success of all our pupils. Below you will find our key school policies available to download and read. If you require a paper copy of any of these documents, please contact the school office.</p>
 
             <div class="policy-list">
-                <!-- Links assume the PDFs are uploaded to the main repository folder -->
                 <a href="Child Protection and Safeguarding Policy.pdf" target="_blank" class="policy-item">
                     <span class="policy-icon">📄</span> Child Protection and Safeguarding Policy
                 </a>
@@ -186,9 +227,9 @@
     </main>
 
     <footer>
-        <p><strong>St. Eanswythe's Church of England Primary School</strong></p>
-        <p>Church Street, Folkestone, Kent, CT20 1SE</p>
-        <p>Tel: 01303 255516 | Email: office@st-eanswythes.kent.sch.uk</p>
+        <p><strong>St. Eanswythe's Primary School</strong></p>
+        <p>A Church of England Academy, Folkestone</p>
+        <p>Tel: 01303 252525 | Email: office@st-eanswythes.kent.sch.uk</p>
         <p style="margin-top: 1rem; font-size: 0.8em; color: #a0aec0;">&copy; 2026 St. Eanswythe's School. All rights reserved.</p>
     </footer>
 
