@@ -31,10 +31,10 @@
         header {
             background-color: #f9f9f9;
             color: #22316C;
-            padding: 1.5rem;
+            padding: 1.5rem 2rem;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start; /* Aligns the header content to the left */
         }
         .header-logo {
             max-width: 140px; 
@@ -47,12 +47,12 @@
         header h1 {
             color: #C02C21;
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 3rem; /* Increased from 2.5rem */
             line-height: 1.2;
         }
         .subtitle {
             margin: 0.2rem 0 0 0;
-            font-size: 1.2rem;
+            font-size: 1.5rem; /* Increased from 1.2rem */
             font-weight: 600;
         }
         .strapline {
@@ -315,28 +315,32 @@
                 grid-template-columns: 1fr;
             }
             
-            /* Mobile Header Centering */
+            /* Mobile Header Layout - Now Left-Aligned */
             header {
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
+                align-items: flex-start; /* Changed to left alignment */
+                justify-content: flex-start; /* Changed to left alignment */
+                text-align: left; /* Changed to left alignment */
                 width: 100%;
+                padding: 1.5rem;
             }
             .header-logo {
-                margin: 0 auto 1rem auto; 
+                margin: 0 0 1rem 0; /* Changed to remove auto-centering margins */
                 max-width: 110px;
                 display: block;
             }
             .header-text {
-                text-align: center;
+                text-align: left; /* Changed to left alignment */
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start; /* Changed to left alignment */
             }
             header h1 {
-                font-size: 2rem;
+                font-size: 2.4rem; /* Scaled up for mobile */
+            }
+            .subtitle {
+                font-size: 1.3rem; /* Scaled up for mobile */
             }
             
             .hero-gallery {
