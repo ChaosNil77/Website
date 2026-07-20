@@ -205,12 +205,68 @@
             margin-bottom: 3rem;
         }
         
-        /* Cards/Panels */
+        /* General Panel Styling */
         .panel {
             background: white;
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(34, 49, 108, 0.1);
+        }
+
+        /* --- NEW: Headteacher Welcome Panel Styling --- */
+        .welcome-panel {
+            background: white;
+            border-radius: 12px;
+            border: 2px solid #C02C21; /* Red border to match Saltwood design */
+            position: relative;
+            box-shadow: 0 4px 8px rgba(34, 49, 108, 0.1);
+        }
+
+        .headteacher-photo {
+            position: absolute;
+            left: 20px;
+            top: 20px; /* This allows it to overlap the red header and white body */
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            z-index: 5;
+        }
+
+        .welcome-header {
+            background-color: #C02C21;
+            padding: 1.5rem 1.5rem 1.5rem 170px; /* Leaves space for the floating photo */
+            border-radius: 9px 9px 0 0;
+            min-height: 110px;
+            display: flex;
+            align-items: center;
+        }
+
+        .welcome-header h2 {
+            color: white;
+            margin: 0;
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+
+        .welcome-content {
+            padding: 1rem 2.5rem 2rem 2.5rem;
+            color: #4a5568; /* Slightly softer grey for reading */
+        }
+
+        .welcome-intro {
+            margin-left: 140px; /* Indents the first paragraph around the photo */
+            min-height: 50px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .highlight-blue {
+            color: #00bfff; /* Bright blue highlight */
+            font-weight: bold;
+            font-size: 1.05rem;
         }
 
         /* Notice Board */
@@ -284,10 +340,8 @@
                 align-items: center;
                 justify-content: space-between;
             }
-
-            /* Mobile Links Restructuring */
             .nav-links {
-                display: none; /* Hidden by default until toggled */
+                display: none; 
                 flex-direction: column;
                 width: 100%;
                 background-color: #a0241b; 
@@ -295,19 +349,15 @@
             .nav-links.active {
                 display: flex;
             }
-
             .dropdown {
                 width: 100%;
                 display: block;
             }
-            
             .dropdown > a {
-                padding: 0.85rem 1.5rem; /* Slimmer padding */
+                padding: 0.85rem 1.5rem;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.15);
                 font-size: 1rem;
             }
-
-            /* Mobile Dropdown Accordion */
             .dropdown-content {
                 position: static;
                 display: none;
@@ -316,22 +366,39 @@
                 border-top: none;
                 border-radius: 0;
             }
-            
-            /* Class to trigger accordion expansion */
             .dropdown-content.show {
                 display: block;
             }
-
             .dropdown-content a {
-                padding: 0.6rem 1.5rem 0.6rem 2.5rem; /* Indented neatly, slim height */
+                padding: 0.6rem 1.5rem 0.6rem 2.5rem;
                 background-color: #fceceb;
                 color: #22316C;
                 font-size: 0.9em;
                 border-bottom: 1px solid #f0d5d3;
             }
             
-            .dropdown-content a:last-child {
-                border-bottom: none;
+            /* Welcome Panel Mobile Layout */
+            .headteacher-photo {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin: -40px auto 1rem auto; /* Pulls photo up into the previous section slightly, centers it */
+                display: block;
+            }
+            .welcome-header {
+                padding: 1.5rem;
+                text-align: center;
+                justify-content: center;
+            }
+            .welcome-header h2 {
+                font-size: 1.5rem;
+            }
+            .welcome-intro {
+                margin-left: 0; /* Remove indent on small screens */
+                text-align: center;
+            }
+            .welcome-content {
+                padding: 1rem 1.5rem 2rem 1.5rem;
             }
         }
     </style>
@@ -409,11 +476,27 @@
 
         <div class="content-grid">
             
-            <section class="panel">
-                <h3>Welcome from the Headteacher</h3>
-                <p>A very warm welcome to our school website. It is an absolute privilege to lead this vibrant and caring Church of England community.</p>
-                <p>We pride ourselves on our rich curriculum, strong community links, and the exceptionally high standards of behavior and achievement our children demonstrate every day, all guided by our core Christian values.</p>
-                <p>Please explore the site to learn more about our values, our academic programs, and the wonderful work our pupils are producing.</p>
+            <!-- Updated Welcome Panel -->
+            <section class="welcome-panel">
+                <img src="images/claire.png" alt="Headteacher Claire" class="headteacher-photo">
+                
+                <div class="welcome-header">
+                    <h2>Welcome to St. Eanswythe's Primary School</h2>
+                </div>
+                
+                <div class="welcome-content">
+                    <p class="welcome-intro">As the Headteacher I would like to welcome you to our community and invite you to explore the website which I hope will give you an impression of the caring ethos with which we seek to educate the children.</p>
+                    
+                    <p class="highlight-blue">If you are looking for a school place in September 2026, please contact us to book a tour of our friendly school and its extensive grounds!</p>
+                    
+                    <p>We pride ourselves on our rich curriculum, strong community links, and the exceptionally high standards of behavior and achievement our children demonstrate every day, all guided by our core Christian values.</p>
+                    
+                    <p>I believe time spent in primary school sets the foundations upon which all future learning is built. We aim to provide a nurturing and creative community, where all children are taught to believe they can make a positive difference to the world.</p>
+
+                    <p>I look forward to welcoming you.</p>
+                    <br>
+                    <p><strong>Mrs Claire</strong><br>Headteacher</p>
+                </div>
             </section>
 
             <aside class="panel notice-board">
@@ -424,10 +507,6 @@
                         End of Year Academic Reports go home to parents.
                     </li>
                     <li>
-                        <span class="date-badge">17th July</span>
-                        Year 5 Summer Trip to France.
-                    </li>
-                      <li>
                         <span class="date-badge">18th July</span>
                         Year 5 Summer Trip – please return consent forms to the main office.
                     </li>
@@ -442,9 +521,10 @@
     </main>
 
     <footer>
-        <p><strong>St. Eanswythe's Church of England Primary School</strong></p>
-        <p>Church Street, Folkestone, Kent, CT20 1SE</p>
-        <p>Tel: 01303 255516 | Email: office@st-eanswythes.kent.sch.uk</p>
+        <p><strong>St. Eanswythe's Primary School</strong></p>
+        <p>A Church of England Academy, Folkestone</p>
+        <p>123 School Lane, Folkestone, Kent, CT20 2XX</p>
+        <p>Tel: 01303 252525 | Email: office@st-eanswythes.kent.sch.uk</p>
         <p style="margin-top: 1rem; font-size: 0.8em; color: #a0aec0;">&copy; 2026 St. Eanswythe's School. All rights reserved.</p>
     </footer>
 
