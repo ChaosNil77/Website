@@ -218,13 +218,13 @@
             background: white;
             border-radius: 12px;
             border: 2px solid #C02C21;
-            position: relative; /* Allows absolute positioning inside for mobile */
+            position: relative;
             box-shadow: 0 4px 8px rgba(34, 49, 108, 0.1);
         }
 
         .welcome-header {
             background-color: #C02C21;
-            padding: 1.5rem 1.5rem 1.5rem 180px; /* Leaves space on the left for the floating photo */
+            padding: 1.5rem 1.5rem 1.5rem 180px; 
             border-radius: 9px 9px 0 0;
             min-height: 110px;
             display: flex;
@@ -239,22 +239,23 @@
         }
 
         .welcome-content {
-            padding: 1.5rem 2.5rem 2rem 2.5rem;
+            padding: 1.2rem 2.5rem 2rem 2.5rem; /* Slightly reduced top padding for tighter flow */
             color: #4a5568; 
         }
 
         .headteacher-photo {
-            float: left; /* Pushes image to the left and wraps text around it */
+            float: left; 
             width: 140px;
             height: 140px;
             border-radius: 50%;
             border: 4px solid white;
-            margin-top: -85px; /* Pulls the image up so it overlaps the red header */
-            margin-right: 25px;
-            margin-bottom: 5px;
+            margin-top: -105px; /* Pulled further up into the red section */
+            margin-right: 15px; /* Keeps text close on the right */
+            margin-bottom: 5px; /* Keeps text close on the bottom */
             position: relative;
             z-index: 5;
-            shape-outside: circle(50%); /* This CSS creates the perfect curve wrap for the text! */
+            shape-outside: circle(50%); 
+            shape-margin: 12px; /* Creates a very precise, tight buffer curve around the image */
             object-fit: cover;
             box-shadow: 0 4px 6px rgba(0,0,0,0.15);
         }
@@ -262,7 +263,6 @@
         .welcome-intro {
             font-weight: 600;
             color: #4a5568;
-            /* Margins removed so the text naturally hugs the floated image */
         }
 
         .highlight-blue {
@@ -386,9 +386,9 @@
                 border-bottom: 1px solid #f0d5d3;
             }
             
-            /* --- UPDATED: Welcome Panel Mobile Layout --- */
+            /* Welcome Panel Mobile Layout */
             .welcome-header {
-                padding: 1.2rem 1rem 1.2rem 100px; /* Leaves exact space on the left for the photo */
+                padding: 1.2rem 1rem 1.2rem 100px; 
                 text-align: left;
                 min-height: 90px;
                 align-items: center;
@@ -397,15 +397,15 @@
                 font-size: 1.3rem;
             }
             .headteacher-photo {
-                float: none; /* Disables the desktop text wrapping */
+                float: none; 
                 position: absolute;
-                top: 1.2rem; /* Aligns perfectly with the header padding */
+                top: 1.2rem; 
                 left: 1rem;
                 margin: 0; 
                 width: 75px;
                 height: 75px;
                 border: 2px solid white;
-                shape-outside: none; /* Disables the circular wrapping */
+                shape-outside: none; 
             }
             .welcome-content {
                 padding: 1.5rem;
@@ -492,7 +492,6 @@
                 </div>
                 
                 <div class="welcome-content">
-                    <!-- The image is now inside the content area to allow true text wrapping on Desktop -->
                     <img src="images/claire.png" alt="Headteacher Claire" class="headteacher-photo">
                     
                     <p class="welcome-intro">As the Headteacher I would like to welcome you to our community and invite you to explore the website which I hope will give you an impression of the caring ethos with which we seek to educate the children.</p>
