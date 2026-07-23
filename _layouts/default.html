@@ -1,22 +1,61 @@
-<ul class="nav-links">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | St. Eanswythe's</title>
+    
+    <!-- Link to external stylesheet with dynamic base path -->
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <img src="{{ '/images/stelogo.png' | relative_url }}" alt="St. Eanswythe's School Logo" class="header-logo">
+            <div class="header-text">
+                <h1>St. Eanswythe's</h1>
+                <p class="subtitle">Church of England Primary School</p>
+                <p class="strapline">Learning Holistically Through God's Unconditional Love.</p>
+            </div>
+        </div>
+
+        <div class="header-search">
+            <form action="https://www.google.com/search" method="GET" target="_blank">
+                <input type="hidden" name="as_sitesearch" value="st-eanswythes.kent.sch.uk">
+                <input type="text" name="q" placeholder="Search site..." required>
+                <button type="submit" aria-label="Search">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <nav>
+        <button class="mobile-menu-toggle">
+            <span>☰ Menu</span>
+        </button>
+        <ul class="nav-links">
             <li class="dropdown">
-                <a href="index.html">Home ▾</a>
+                <a href="{{ '/index.html' | relative_url }}">Home ▾</a>
                 <div class="dropdown-content">
-                    <a href="index.html#welcome">Headteacher's Welcome</a>
-                    <a href="index.html#vision">Vision & Values</a>
-                    <a href="index.html#news">Latest News</a>
-                    <!-- Added Policies under Home -->
-                    <a href="policies.html">Policies</a>
+                    <a href="{{ '/index.html#welcome' | relative_url }}">Headteacher's Welcome</a>
+                    <a href="{{ '/index.html#vision' | relative_url }}">Vision & Values</a>
+                    <a href="{{ '/index.html#news' | relative_url }}">Latest News</a>
+                    <a href="{{ '/policies.html' | relative_url }}">Policies</a>
                 </div>
             </li>
             
             <li class="dropdown">
                 <a href="#about">About Us ▾</a>
                 <div class="dropdown-content">
-                    <a href="our-staff.html">Meet the Staff</a>
+                    <a href="{{ '/our-staff.html' | relative_url }}">Meet the Staff</a>
                     <a href="#governors">Governors</a>
                     <a href="#admissions">Admissions</a>
-                    <a href="policies.html">Policies & Safeguarding</a>
+                    <a href="{{ '/policies.html' | relative_url }}">Policies & Safeguarding</a>
                 </div>
             </li>
             
@@ -33,8 +72,7 @@
                 <a href="#parents">Parents Hub ▾</a>
                 <div class="dropdown-content">
                     <a href="#letters">Letters Home</a>
-                    <!-- Explicit link to calendar.html -->
-                    <a href="calendar.html">Term Dates</a>
+                    <a href="{{ '/calendar.html' | relative_url }}">Term Dates</a>
                     <a href="#uniform">Uniform Guidelines</a>
                     <a href="#pta">PTA (Friends of St. Eanswythe's)</a>
                 </div>
@@ -48,3 +86,47 @@
                 </div>
             </li>
         </ul>
+    </nav>
+
+    <main class="container">
+        {{ content }}
+    </main>
+
+    <footer>
+        <p><strong>St. Eanswythe's Primary School</strong></p>
+        <p>A Church of England Academy, Folkestone</p>
+        <p>123 School Lane, Folkestone, Kent, CT20 2XX</p>
+        <p>Tel: 01303 252525 | Email: office@st-eanswythes.kent.sch.uk</p>
+        <p style="margin-top: 1rem; font-size: 0.8em; color: #a0aec0;">&copy; 2026 St. Eanswythe's School. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            dropdowns.forEach(dropdown => {
+                const triggerLink = dropdown.querySelector('a');
+                const content = dropdown.querySelector('.dropdown-content');
+
+                triggerLink.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault(); 
+                        document.querySelectorAll('.dropdown-content').forEach(menu => {
+                            if (menu !== content) {
+                                menu.classList.remove('show');
+                            }
+                        });
+                        content.classList.toggle('show');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
